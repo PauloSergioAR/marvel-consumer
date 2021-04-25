@@ -5,16 +5,17 @@ function getCharacters(req, res){
 
   if(!characterId){
     consumeCharacters().then(response => {
-      res.json(response);
+      res.send(response.data);
     }).catch(error => {
-      console.log(error)
-      res.status(error.response.status).send(error.response.data);
+      res.status(500).json({error: error});
     });
     return;
 
   } else {
     consumeCharacter(characterId).then(response => {
-      res.json(response);
+      res.json(response.data);
+    }).catch(error => {
+      res.status(500).json({error: error});
     })
     return;
   }
