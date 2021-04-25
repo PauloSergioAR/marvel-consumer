@@ -1,17 +1,22 @@
+const { consumeCharacters, consumeCharacter } = require('./CharacterConsumer');
+
 function getCharacters(req, res){
   const characterId = req.params.id;
 
   if(!characterId){
-    res.json({
-      message: "Get all characters work"
+    consumeCharacters().then(response => {
+      res.json(response);
+    }).catch(error => {
+      console.log(error)
+      res.status(error.response.status).send(error.response.data);
     });
-    //return all characters
+    return;
+
   } else {
-    res.json({
-      message: "Get character with id",
-      id: characterId
-    });
-    //return using id
+    consumeCharacter(characterId).then(response => {
+      res.json(response);
+    })
+    return;
   }
 }
 
