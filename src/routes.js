@@ -1,14 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const { getCharacters, getComics, getEvents, getSeries, getStories } = require('./Character/CharacterControler');
+const { 
+  getCharacters, 
+	getCharacter,
+	getComics, 
+	getEvents, 
+	getSeries, 
+	getStories 
+} = require('./Character/CharacterControler');
 
-const characterBaseUrl = "/v1/public/characters";
-
-router.get(characterBaseUrl, getCharacters);
-router.get(characterBaseUrl + "/:id", getCharacters);
-router.get(characterBaseUrl + "/:id/comics", getComics);
-router.get(characterBaseUrl + "/:id/events", getEvents);
-router.get(characterBaseUrl + "/:id/series", getSeries);
-router.get(characterBaseUrl + "/:id/stories", getStories);
+router.get("/v1/public/characters", getCharacters);
+router.get("/v1/public/characters/:id", getCharacter);
+router.get("/v1/public/characters/:id/comics", getComics);
+router.get("/v1/public/characters/:id/events", getEvents);
+router.get("/v1/public/characters/:id/series", getSeries);
+router.get("/v1/public/characters/:id/stories", getStories);
 
 module.exports = router;

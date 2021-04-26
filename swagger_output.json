@@ -1,0 +1,196 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "REST API",
+    "description": ""
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/v1/public/characters": {
+      "get": {
+        "tags": [
+          "Character"
+        ],
+        "description": "This endpoint returns all Marvel characters.",
+        "parameters": [
+          {
+            "name": "limit",
+            "description": "The number of characters returned on a request.   The default value is 20.  This number cannot be greater than 100",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "The offset of characters returned on a request.   I.E if the limit is 20 and the page is 2, the characters from position 21 to 41 will be returned.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/v1/public/characters/{id}": {
+      "get": {
+        "tags": [
+          "Character"
+        ],
+        "description": "This endpoint returns a Marvel character based on its id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The if of the character."
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/v1/public/characters/{id}/comics": {
+      "get": {
+        "tags": [
+          "Comics"
+        ],
+        "description": "This endpoint returns the comics for a Marvel character based on its id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The if of the character."
+          },
+          {
+            "name": "limit",
+            "description": "The number of comics returned on a request.   The default value is 20.  This number cannot be greater than 100",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "The offset of comics returned on a request.   I.E if the limit is 20 and the page is 2, the comics from position 21 to 41 will be returned.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/v1/public/characters/{id}/events": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "description": "This endpoint returns the events for a Marvel character based on its id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The if of the character."
+          },
+          {
+            "name": "limit",
+            "description": "The number of events returned on a request.   The default value is 20.  This number cannot be greater than 100",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "The offset of events returned on a request.   I.E if the limit is 20 and the page is 2, the events from position 21 to 41 will be returned.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/v1/public/characters/{id}/series": {
+      "get": {
+        "tags": [
+          "Series"
+        ],
+        "description": "This endpoint returns the series for a Marvel character based on its id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The if of the character."
+          },
+          {
+            "name": "limit",
+            "description": "The number of characters returned on a request.   The default value is 20.  This number cannot be greater than 100",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "The offset of characters returned on a request.   I.E if the limit is 20 and the page is 2, the characters from position 21 to 41 will be returned.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/v1/public/characters/{id}/stories": {
+      "get": {
+        "tags": [
+          "Stories"
+        ],
+        "description": "This endpoint returns the stories for a Marvel character based on its id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The if of the character."
+          },
+          {
+            "name": "limit",
+            "description": "The number of stories returned on a request.   The default value is 20.  This number cannot be greater than 100",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "The offset of stories returned on a request.   I.E if the limit is 20 and the page is 2, the stories from position 21 to 41 will be returned.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}
