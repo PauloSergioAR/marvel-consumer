@@ -7,7 +7,7 @@ const doc = {
     info: {
         version: "1.0.0",
         title: "Marvel Adapter Api",
-        description: "Adapter for the Marvel api"
+        description: "Adapter for the Marvel api."
     },
     host: "https://warm-hamlet-90772.herokuapp.com",
     schemes:['https']
