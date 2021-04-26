@@ -5,7 +5,7 @@ const swaggerFile = require('./swagger_output.json');
 
 const router = require('./src/routes');
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(router);
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
