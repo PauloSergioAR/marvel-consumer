@@ -2,14 +2,14 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "REST API",
-    "description": ""
+    "title": "Marvel Adapter Api",
+    "description": "Adapter for the Marvel api"
   },
-  "host": "localhost:3000",
+  "host": "https://warm-hamlet-90772.herokuapp.com/",
   "basePath": "/",
   "tags": [],
   "schemes": [
-    "http"
+    "https"
   ],
   "consumes": [],
   "produces": [],
