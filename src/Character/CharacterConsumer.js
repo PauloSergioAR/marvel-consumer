@@ -8,21 +8,53 @@ const instance = axios.create({
 function consumeCharacters(limit=20, page=1){
   let offsetNumber = (page - 1) * limit;
   let offsetParam  = offsetNumber > 0 ? "&offset=" + offsetNumber : "";
-
+  
   let authParams = getAuthParams();
   return instance.get('/characters' + "?" + authParams + "&limit=" + limit + offsetParam);
 }
 
-function consumeCharacter(id,limit=20, page=1){
+function consumeCharacter(id){
+  let authParams = getAuthParams();
+  return instance.get('/characters/' + id + "?" + authParams);
+}
+
+function consumeComics(id,limit=20, page=1){
   let offsetNumber = (page - 1) * limit;
   let offsetParam  = offsetNumber > 0 ? "&offset=" + offsetNumber : "";
   
   let authParams = getAuthParams();
+  return instance.get('/characters/' + id + "/comics" + "?" + authParams + "&limit=" + limit + "&offset=" + offsetParam);
+}
 
-  return instance.get('/characters/' + id + "?" + authParams + "&limit=" + limit + "&offset=" + offsetParam);
+function consumeEvents(id,limit=20, page=1){
+  let offsetNumber = (page - 1) * limit;
+  let offsetParam  = offsetNumber > 0 ? "&offset=" + offsetNumber : "";
+  
+  let authParams = getAuthParams();
+  return instance.get('/characters/' + id + "/events" + "?" + authParams + "&limit=" + limit + "&offset=" + offsetParam);
+}
+
+function consumeSeries(id,limit=20, page=1){
+  let offsetNumber = (page - 1) * limit;
+  let offsetParam  = offsetNumber > 0 ? "&offset=" + offsetNumber : "";
+  
+  let authParams = getAuthParams();
+  return instance.get('/characters/' + id + "/series" + "?" + authParams + "&limit=" + limit + "&offset=" + offsetParam);
+}
+
+function consumeStories(id,limit=20, page=1){
+  let offsetNumber = (page - 1) * limit;
+  let offsetParam  = offsetNumber > 0 ? "&offset=" + offsetNumber : "";
+  
+  let authParams = getAuthParams();
+  return instance.get('/characters/' + id + "/stories" + "?" + authParams + "&limit=" + limit + "&offset=" + offsetParam);
 }
 
 module.exports = {
   consumeCharacters,
-  consumeCharacter
+  consumeCharacter,
+  consumeComics,
+  consumeEvents,
+  consumeSeries,
+  consumeStories
 }

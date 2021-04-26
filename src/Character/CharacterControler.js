@@ -1,13 +1,19 @@
-const { consumeCharacters, consumeCharacter } = require('./CharacterConsumer');
+const {
+  consumeCharacters,
+  consumeCharacter,
+  consumeComics,
+  consumeEvents,
+  consumeSeries,
+  consumeStories } = require('./CharacterConsumer');
 
 function getCharacters(req, res){
   const characterId = req.params.id;
 
   if(!characterId){
-    consumeCharacters().then(response => {
+    consumeCharacters(req.query.limit, req.query.page).then(response => {
       res.send(response.data);
     }).catch(error => {
-      res.status(500).json({error: error});
+      res.status(error.response.data.code).json({error: error.response.data});
     });
     return;
 
@@ -15,7 +21,7 @@ function getCharacters(req, res){
     consumeCharacter(characterId).then(response => {
       res.json(response.data);
     }).catch(error => {
-      res.status(500).json({error: error});
+      res.status(error.data.code).json({error: error.data});
     })
     return;
   }
@@ -26,12 +32,13 @@ function getComics(req, res){
 
   if(!characterId){
     res.status(400).send({error: "Request lacking character id."});
+  } else {
+    consumeComics(characterId, req.query.limit, req.query.page).then(response => {
+      res.json(response.data);
+    }).catch(error => {
+      res.status(error.response.data.code).json({error: error.response.data});
+    });
   }
-  res.json({
-    message: "Get comics with character id",
-    id: characterId
-  });
-  
 }
 
 function getEvents(req, res){
@@ -39,12 +46,13 @@ function getEvents(req, res){
 
   if(!characterId){
     res.status(400).send({error: "Request lacking character id."});
+  } else {
+    consumeEvents(characterId, req.query.limit, req.query.page).then(response => {
+      res.json(response.data);
+    }).catch(error => {
+      res.status(error.response.data.code).json({error: error.response.data});
+    });
   }
-
-  res.json({
-    message: "Get events with character id",
-    id: characterId
-  });
 }
 
 function getSeries(req, res){
@@ -52,12 +60,13 @@ function getSeries(req, res){
 
   if(!characterId){
     res.status(400).send({error: "Request lacking character id."});
+  } else {
+    consumeSeries(characterId, req.query.limit, req.query.page).then(response => {
+      res.json(response.data);
+    }).catch(error => {
+      res.status(error.response.data.code).json({error: error.response.data});
+    });
   }
-
-  res.json({
-    message: "Get series with character id",
-    id: characterId
-  });
 }
 
 function getStories(req, res){
@@ -65,12 +74,13 @@ function getStories(req, res){
 
   if(!characterId){
     res.status(400).send({error: "Request lacking character id."});
+  } else {
+    consumeStories(characterId, req.query.limit, req.query.page).then(response => {
+      res.json(response.data);
+    }).catch(error => {
+      res.status(error.response.data.code).json({error: error.response.data});
+    });
   }
-
-  res.json({
-    message: "Get stories with character id",
-    id: characterId
-  });
 }
 
 module.exports = {
